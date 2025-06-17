@@ -1,0 +1,197 @@
+.webgl-content * {
+  border: 0; 
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.webgl-content {
+  top: 0; 
+  left: 0;
+  position: relative;
+  background: #1a0e00; /* dark brownish background for contrast */
+  color: #ff7f00; /* bright orange text fallback */
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Center logo and progress with orange glow and shadow */
+.webgl-content .logo, .progress {
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 6px #ff7f00);
+  text-shadow: 0 0 10px #ff7f00, 0 0 20px #ff5a00;
+  transition: filter 0.3s ease;
+}
+
+/* Logo styling: use orange-tinted version or overlay */
+.webgl-content .logo {
+  width: 154px; 
+  height: 130px;
+  background: url('progressLogo.Light.png') no-repeat center / contain;
+  filter: drop-shadow(0 0 10px #ff6f00);
+  transition: filter 0.3s ease;
+  /* Add an orange overlay glow */
+  position: relative;
+}
+
+.webgl-content .logo::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle, rgba(255,127,0,0.4), transparent 70%);
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+/* Progress bar container */
+.webgl-content .progress {
+  height: 18px; 
+  width: 141px; 
+  margin-top: 90px;
+  border-radius: 9px;
+  background: #331a00;
+  box-shadow: 0 0 10px #ff7f00 inset;
+  overflow: hidden;
+}
+
+/* Empty progress background with subtle pattern */
+.webgl-content .progress .empty {
+  float: right; 
+  width: 100%; 
+  height: 100%; 
+  display: inline-block;
+  background: linear-gradient(45deg, #4a2600 25%, #3d1f00 25%, #3d1f00 50%, #4a2600 50%, #4a2600 75%, #3d1f00 75%, #3d1f00);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 5px #ff7f00);
+  border-radius: 9px;
+}
+
+/* Full progress bar with bright orange fill and shadow */
+.webgl-content .progress .full {
+  float: left; 
+  width: 0%; /* animated via JS */
+  height: 100%; 
+  display: inline-block;
+  background: linear-gradient(90deg, #ff9b33, #ff6f00);
+  box-shadow: 0 0 15px #ff8c00;
+  border-radius: 9px 0 0 9px;
+  transition: width 0.25s ease;
+}
+
+/* Dark variants with orange glow */
+.webgl-content .logo.Dark {
+  background-image: url('progressLogo.Dark.png');
+  filter: drop-shadow(0 0 12px #ff8c00);
+}
+
+.webgl-content .progress.Dark .empty {
+  background-image: url('progressEmpty.Dark.png');
+  filter: drop-shadow(0 0 6px #ff8c00);
+}
+
+.webgl-content .progress.Dark .full {
+  background-image: url('progressFull.Dark.png');
+  filter: drop-shadow(0 0 18px #ff6f00);
+}
+
+/* Footer styling with orange neon glow */
+.webgl-content .footer {
+  margin-top: 5px; 
+  height: 38px; 
+  line-height: 38px; 
+  font-family: 'Orbitron', Helvetica, Verdana, Arial, sans-serif; 
+  font-size: 18px;
+  color: #ff7f00;
+  text-shadow: 0 0 8px #ff6f00, 0 0 12px #ff8c00;
+  background: #2a1500;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 -2px 10px #ff7f00 inset;
+  border-radius: 0 0 10px 10px;
+}
+
+.webgl-content .footer .webgl-logo, 
+.webgl-content .footer .title, 
+.webgl-content .footer .fullscreen {
+  height: 100%; 
+  display: inline-block; 
+  background: transparent center no-repeat; 
+  filter: drop-shadow(0 0 6px #ff7f00);
+}
+
+.webgl-content .footer .webgl-logo {
+  background-image: url('webgl-logo.png'); 
+  width: 204px; 
+  float: left;
+}
+
+.webgl-content .footer .title {
+  margin-right: 10px; 
+  float: right;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.webgl-content .footer .fullscreen {
+  background-image: url('fullscreen.png'); 
+  width: 38px; 
+  float: right;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.webgl-content .footer .fullscreen:hover {
+  filter: drop-shadow(0 0 12px #ff8c00);
+}
+
+/* Reset body and html */
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #1a0e00;
+  color: #ff7f00;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+}
+
+/* Center game canvas with subtle shadow */
+#gameContainer canvas {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 30px #ff8c00cc;
+  border-radius: 10px;
+}
+
+/* Simmer branding */
+.simmer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #ff9b33;
+  font-size: 9px;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 5px #ff7f00;
+}
+
+.simmer a {
+  color: #ffcc99;
+  text-decoration: none;
+  font-size: 12px;
+  transition: opacity 3s;
+}
+
+.simmer a:hover {
+  color: #fff3e6;
+  text-decoration: underline;
+}
+
+.simmer.hide {
+  opacity: 0;
+}
